@@ -23,4 +23,5 @@ This app responds to the following [payloads from Tautulli](https://github.com/T
 * Clone the repo
 * Install dependencies: `npm i --no-dev`
 * Create your scene file: `echo [] > scenes.json`
+* Create your environment file: `cp .env.example .env` (don't forget to edit it)
 * Use pm2 to start the daemon: `sudo pm2 start slack-house.json`
