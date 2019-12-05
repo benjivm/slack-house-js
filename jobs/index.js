@@ -28,7 +28,7 @@ function JobManager (lifx, location) {
         sunsetRule.hour = sunset.getHours();
         sunsetRule.minute = sunset.getMinutes();
 
-        // Schedule Job: Power on all lights 15 minutes before sunrise
+        // Schedule Job: Power on all lights 10 minutes before sunrise
         if (this.scheduled.sunriseJob) {
             this.scheduled.sunriseJob.reschedule(sunriseRule);
         } else {
@@ -37,7 +37,7 @@ function JobManager (lifx, location) {
             });
         }
 
-        // Schedule Job: Power off all lights 15 minutes before sunset
+        // Schedule Job: Power off all lights 10 minutes before sunset
         if (this.scheduled.sunsetJob) {
             this.scheduled.sunsetJob.reschedule(sunsetRule);
         } else {
@@ -55,7 +55,7 @@ function JobManager (lifx, location) {
     this.scheduleNextSunriseAndSunset = async () => {
         // Reschedule the Sunrise/Sunset jobs with every day's sun data
         scheduler.scheduleJob('scheduleNextSunriseAndSunset', '0 1 * * *', () => {
-            this.scheduleSunriseAndSunset();
+            this.scheduleAll();
         });
     };
 }
